@@ -26,6 +26,8 @@ app.get("/", function (req, res) {
 
       console.log(temp);
       console.log(description);
+
+      res.send();
     });
   });
 
