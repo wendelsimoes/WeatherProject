@@ -17,7 +17,16 @@ app.get("/", function (req, res) {
     process.env.OPEN_WEATHER_MAP_API_KEY;
 
   https.get(url, function (response) {
-    console.log(response);
+    response.on("data", function (data) {
+      const weatherData = JSON.parse(data);
+
+      const temp = weatherData.main.temp;
+
+      const description = weatherData.weather[0].description;
+
+      console.log(temp);
+      console.log(description);
+    });
   });
 
   res.send("index");
